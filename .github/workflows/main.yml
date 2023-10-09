@@ -1,19 +1,21 @@
-name: Cypress Tests
-
+name: cypress Test
 on: push
-
 jobs:
-  test:
+  cypress-run:
     runs-on: windows-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Cypress tests
-      run: npx cypress run
-
-     
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Cypress install
+        uses: cypress-io/github-action@v6
+        with:
+          # just perform install
+          runTests: false
+      - name: Cypress info
+        run: npx cypress info
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          # we have already installed all dependencies above
+          install: false
+          # rest of your parameters
