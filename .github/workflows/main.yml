@@ -5,8 +5,9 @@ jobs:
     timeout-minutes: 10
     runs-on: [self-hosted, decathlon]
     steps:
+      # Cleaner internal action need to be the first step on your workflow as it setup a post action that will be run last!
       - name: pre/post clean
-       uses: dktunited/.github/actions/cleaner@main
+        uses: dktunited/.github/actions/cleaner@main
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cypress install
