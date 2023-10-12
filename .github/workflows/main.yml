@@ -2,8 +2,11 @@ name: cypress Test
 on: push
 jobs:
   cypress-run:
+    timeout-minutes: 10
     runs-on: [self-hosted, decathlon]
     steps:
+      - name: pre/post clean
+       uses: dktunited/.github/actions/cleaner@main
       - name: Checkout
         uses: actions/checkout@v4
       - name: Cypress install
