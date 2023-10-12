@@ -2,7 +2,7 @@ name: cypress Test
 on: push
 jobs:
   cypress-run:
-    runs-on: windows-latest
+    runs-on: [self-hosted, decathlon]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
